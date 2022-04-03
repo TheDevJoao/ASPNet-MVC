@@ -1,0 +1,12 @@
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\bin\Debug\net5.0\App.Servico.deps.json
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\bin\Debug\net5.0\App.Servico.dll
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\bin\Debug\net5.0\ref\App.Servico.dll
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\bin\Debug\net5.0\App.Servico.pdb
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\obj\Debug\net5.0\App.Servico.csproj.AssemblyReference.cache
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\obj\Debug\net5.0\App.Servico.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\obj\Debug\net5.0\App.Servico.AssemblyInfoInputs.cache
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\obj\Debug\net5.0\App.Servico.AssemblyInfo.cs
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\obj\Debug\net5.0\App.Servico.csproj.CoreCompileInputs.cache
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\obj\Debug\net5.0\App.Servico.dll
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\obj\Debug\net5.0\ref\App.Servico.dll
+C:\Users\JP\OneDrive\GitHub\DepartamentosMVC\App.Servico\obj\Debug\net5.0\App.Servico.pdb
