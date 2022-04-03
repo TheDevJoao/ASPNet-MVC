@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["titulo"] = "Home";
+}
+
+<section class="app-index">
+    <nav>
+        @Html.ActionLink("Departamento", "Index", "Departamento")
+        @Html.ActionLink("Funcionário", "Index", "Funcionario")
+        @Html.ActionLink("Movimentação", "Index", "Movimentacao")
+        @Html.ActionLink("Matrix", "Matrix", "Home")
+        @Html.ActionLink("Toasty", "Toasty", "Home")
+    </nav>
+</section>
+
+<link rel="stylesheet" href="/css/app.views.home.index.css">

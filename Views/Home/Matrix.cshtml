@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_LayoutMatrix";
+    ViewData["titulo"] = "Matrix";
+    var idComponente = Guid.NewGuid().ToString("N");
+}
+
+<div id="@(idComponente)" class="app-views-home-matrix">
+    <canvas id="matrix"></canvas>
+</div>
+
+@section Scripts{
+
+    <script>
+        $(function() {
+            app.carregueCss("/css/app.views.home.matrix.css");
+            app.carregueJavascript("/js/app.views.home.matrix.js", {
+                callback: function() {
+                    new app.views.home.matrix($("#@(idComponente)"));
+                }            
+            });
+        })
+    </script>
+
+}

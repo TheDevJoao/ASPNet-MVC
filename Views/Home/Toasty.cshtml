@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["titulo"] = "Toasty";
+    var idComponente = Guid.NewGuid().ToString("N");
+}
+
+<div id="@(idComponente)" class="app-views-home-toasty">        
+    <p>Try konami code: ↑ ↑ ↓ ↓ ← → ← → B A</p>
+    <p>Try uppercut: ↓ A</p>
+
+@*    <button>Toasty!</button>*@
+</div>
+
+@section Scripts{
+
+    <script>
+        $(function() {
+            app.carregueCss("/css/app.views.home.toasty.css");
+            app.carregueJavascript("/js/app.views.home.toasty.js", {
+                callback: function() {
+                    var toasty_def = new QToasty(params = {});
+                    var toasty = new QToasty(params = { 'keyCodes': [40, 65], 'volume' : 0.5, 'imageSize': ''});
+
+                    //$("#@(idComponente) button").on("click", ev => {
+                    //    ev.preventDefault();
+                    //    toasty.trigger();
+                    //}); 
+                }            
+            });
+        })
+    </script>
+
+}

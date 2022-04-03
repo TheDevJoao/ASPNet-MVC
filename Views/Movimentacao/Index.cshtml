@@ -1,0 +1,73 @@
+﻿@model Movimentacao
+
+@{
+    var idComponente = Guid.NewGuid().ToString("N");
+    var modelParaOClientSide = new { };
+}
+
+<section id="@(idComponente)" class="painel app-views-movimentacao-index">
+
+    @using(Html.BeginForm("Salvar", "Movimentacao", FormMethod.Post))
+    {        
+        <!-- Barra de botoes -->
+        @Html.AppBarraDeBotoes(idComponente).Salvar()
+
+        <!-- Titulo -->
+        @Html.AppTitulo("Movimentação")
+
+        <!-- Data -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">                
+                @Html.AppLabel(x => x.DataDaOcorrencia, obrigatorio: true)
+            </div>
+            <div class="coluna">
+                @Html.AppTextBox(x => x.DataDaOcorrencia, obrigatorio: true, autofocus: true)
+            </div>
+        </div>
+
+        <!-- Funcionário -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">                
+                @Html.AppLabel(x => x.Funcionario, obrigatorio: true)
+            </div>
+            <div class="coluna">
+                @Html.AppCombogridFuncionario(x => x.Funcionario, obrigatorio: true, tamanho: 300)
+            </div>
+        </div>
+
+        <!-- Departamento atual -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">                
+                @Html.AppLabel(x => x.DepartamentoAtual)
+            </div>
+            <div class="coluna">
+                @Html.AppCombogridDepartamento(x => x.DepartamentoAtual, habilite: false, tamanho: 300)
+            </div>
+        </div>
+
+        <!-- Departamento destino -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">                
+                @Html.AppLabel(x => x.DepartamentoDestino, obrigatorio: true)
+            </div>
+            <div class="coluna">
+                @Html.AppCombogridDepartamento(x => x.DepartamentoDestino, obrigatorio: true, tamanho: 300)
+            </div>
+        </div>
+    }
+
+</section>
+
+@section Scripts{
+
+    <script>
+        $(function() {
+            app.carregueJavascript("/js/app.views.movimentacao.index.js", {
+                callback: function() {
+                    new app.views.movimentacao.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+                }            
+            });
+        })
+    </script>
+
+}

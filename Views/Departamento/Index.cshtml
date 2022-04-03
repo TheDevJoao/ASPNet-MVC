@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["titulo"] = "Departamento";
+
+    var idComponente = Guid.NewGuid().ToString("N");
+    var modelParaOClientSide = new { };
+}
+
+<section id="@(idComponente)" class="painel app-views-departamento-index">
+    
+    @Html.AppBarraDeBotoes().TelaInicial()
+
+    @Html.AppTitulo("Departamento")
+    
+    @(Html.AppTabela("grid")        
+        .Colunas(new string[] {"Código", "Descrição"})
+        .Campos(new string[] {"codigo", "descricao"})
+        .LarguraDasColunas(new int[] { 200 })
+        .CampoChave("codigo")
+        .Controller("Departamento")
+        .Action("ConsultePaginado")
+        .HabiliteFiltro()
+        .HabilitePaginacao())
+
+</section>
+
+
+@section Scripts{
+
+    <script>
+        $(function() {
+            app.carregueJavascript("/js/app.views.departamento.index.js", {
+                callback: function() {
+                    new app.views.departamento.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+                }            
+            });
+        })
+    </script>
+
+}
+

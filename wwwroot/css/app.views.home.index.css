@@ -1,0 +1,34 @@
+﻿.app-index {
+    padding: 30px;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .app-index nav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .app-index nav a {
+            display: block;
+            text-decoration: none;
+            width: 150px;
+            border: 1px solid #adadad;
+            background-color: #d3d3d3;
+            color: #030303;
+            text-align: center;
+            margin: 10px;
+            font-size: 15px;
+            font-family: cursive;
+            line-height: 100px;
+            box-shadow: 2px 3px 5px 2px #888888;
+            border-radius: 5px;
+        }
+
+            .app-index nav a:hover {
+                box-shadow: 1px 1px #888888;
+                background-color: #cacaca;
+                color: #06063d;
+            }

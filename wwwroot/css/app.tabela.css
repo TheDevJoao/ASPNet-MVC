@@ -1,0 +1,143 @@
+﻿/*///////////////////////////////////////////////////
+    TABELA
+*/
+.app-tabela table[name="grid"] {
+    border-collapse: collapse;
+    border: 1px solid #bbb5b5;
+    width: 100%;
+    height: 300px;
+}
+
+.app-tabela table[name="grid"] thead {
+    background-color: #101010;
+    color: #bbbbbb;
+    text-align: left;
+}
+
+.app-tabela table[name="grid"] thead tr {
+    height: 30px;
+}
+
+.app-tabela table[name="grid"] thead th {
+    padding-left: 5px;
+}
+
+.app-tabela table[name="grid"] tbody {
+    background-color: #e8ebec;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.app-tabela table[name="grid"] tbody td {
+    padding-left: 5px;
+}
+
+.app-tabela table[name="grid"] tbody .item {
+    height: 20px;
+}
+
+.app-tabela table[name="grid"] tbody .item:hover {
+    cursor: pointer;
+    background-color: #b8bab0;
+}
+
+.app-tabela table[name="grid"] tfoot {
+    background-color: #ababab;
+}
+
+.app-tabela table[name="grid"] tfoot tr th {
+    text-align: center;
+}
+
+.app-tabela #total {
+    background-color: #ababab;
+    text-align: center;
+    font-weight: bold;
+}
+
+.app-tabela .barraDeRolagem {
+    overflow: auto;
+    height: 300px;
+    border-collapse: collapse;
+    border: #ccc solid 1px
+}
+
+/*///////////////////////////////////////////////////
+    PAGINAÇÃO
+*/
+
+.app-tabela .app-paginacao {
+    margin: 1px !important;
+}
+
+.app-tabela .app-paginacao nav {
+    background-color: #ffffff;
+    border-radius: 0px;
+    padding: 5px 0px 5px 5px;
+    box-shadow: 0px 0px 1px 0px #8c8a8a;
+    margin-bottom: 0px;
+}
+
+.app-tabela .app-paginacao .paginacao {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+.app-tabela .app-paginacao .paginacao .page-link {
+    position: relative;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    margin-left: -1px;
+    font-size: .875rem;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.app-tabela .app-paginacao .paginacao .page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+
+.app-tabela .app-paginacao .paginacao .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+
+.app-tabela .app-paginacao .paginacao .page-item:first-child .page-link {
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+}
+
+
+.app-tabela .app-paginacao .paginacao .page-item:last-child .page-link {
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+}
+
+.app-tabela .app-paginacao nav.linha {
+    width: 99.07% !important;
+    padding-right: 5px !important;
+    align-items: center;
+}
+
+.app-tabela .app-paginacao nav ul.coluna {
+    padding-right: 5px !important; 
+}
+
+.app-tabela .app-paginacao .atualizar:hover {
+    fill: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+}
+

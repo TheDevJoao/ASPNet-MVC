@@ -1,0 +1,115 @@
+﻿@model ModelTabela
+
+@{
+    var idPropriedade = Model.Propriedade + Guid.NewGuid().ToString("N");
+
+    var modelParaOClientSide = new
+    {
+        controller = Model.Controller,
+        action = Model.Action,
+        campos = Model.Campos,
+        campoChave = Model.CampoChave,
+        habiliteFiltro = Model.HabiliteFiltro,
+        habilitePaginacao = Model.HabilitePaginacao,
+        tabela = Model.Propriedade,
+        pagina = Model.Pagina,
+        quantidade = Model.Quantidade
+    };
+}
+
+<div id="@(idPropriedade)" class="app-tabela">
+
+    @if(Model.HabiliteFiltro)
+    {
+        <div class="linha">
+            <div class="coluna">
+                @Html.TextBox("filtro", null, new { @placeholder = "Filtro...", @autocomplete="off"})                                        
+            </div>
+        </div>
+    }
+
+    <div class="@if(!Model.HabilitePaginacao){ <text>barraDeRolagem</text> }">
+           
+        <table id="@(Model.Propriedade)" name="@(Model.Propriedade)">
+            <thead>
+                <tr>
+                    @for (var i = 0; i < Model.Colunas.Count(); i++)
+                    {                               
+                        if(Model.LarguraDasColunas.Count() > i)
+                        {
+                            <th style="width: @(Model.LarguraDasColunas[i])px">
+                                @Model.Colunas[i]
+                            </th>
+                        }
+                        else
+                        {
+                            <th>
+                                @Model.Colunas[i]
+                            </th>
+                        }
+                    }
+                </tr>
+            </thead>
+            <tbody> 
+                <tr>
+                    @foreach(var coluna in Model.Colunas)
+                    {                
+                        <td></td>
+                    }
+                </tr>                                                 
+            </tbody>
+            @if(Model.HabilitePaginacao)
+            {                
+                <tfoot>
+                    <tr>
+                        <th colspan="@(Model.Colunas.Count())">
+                            Total:&nbsp;<span>0</span>
+                        </th>
+                    </tr>
+                </tfoot>
+            }
+        </table>
+    </div>    
+
+    @if(Model.HabilitePaginacao)
+    {
+        <!--Api paginacao-->
+        <div class="app-paginacao">            
+            <nav class="linha">
+                <ul class="coluna paginacao">
+                    @* paginas *@
+                </ul>
+
+                @*<img class="atualizar" src="/img/atualizar.svg" />*@
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                     width="16" 
+                     height="16" 
+                     fill="currentColor" 
+                     class="atualizar" 
+                     viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                </svg>
+            </nav>            
+        </div>
+    } 
+    else
+    {
+       <div id="total">
+           Total:&nbsp;<span>0</span>
+       </div> 
+    }
+
+</div>
+
+
+<script>
+    $(function() {
+        app.carregueCss("/css/app.tabela.css");
+        app.carregueMultiposArquivosJavaScript(["/js/app.tabela.js", "/js/app.paginacao.js"], {
+            callback: function() {
+                new app.tabela($("#@(idPropriedade)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+            }            
+        });
+    })
+</script>

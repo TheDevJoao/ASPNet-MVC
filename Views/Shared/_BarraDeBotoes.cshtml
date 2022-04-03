@@ -1,0 +1,50 @@
+﻿@model ModelBarraDeBotoes
+
+@{
+    var idComponente = Guid.NewGuid().ToString("N");
+
+    var valorChaveParaExclusao = 0;
+
+    if (Model.HabiliteExcluir && Model.Excluir.ValorChave != null)
+    {
+        valorChaveParaExclusao = (int)Model.Excluir.ValorChave;
+    }
+}
+
+<nav id="@(idComponente)">        
+    @if(Model.HabiliteNovo)
+    {
+        @Html.ActionLink(Model.Novo.Texto, Model.Novo.Action)
+    }
+
+    @if(Model.HabiliteSalvar)
+    {
+        <a name="salvar" href="#">@Model.Salvar.Texto</a>
+    }
+
+    @if(Model.HabiliteExcluir && valorChaveParaExclusao != 0)
+    {
+        @Html.ActionLink(Model.Excluir.Texto, Model.Excluir.Action, new { codigo = valorChaveParaExclusao })
+    }
+
+    @if(Model.HabiliteCancelar)
+    {
+        @Html.ActionLink(Model.Cancelar.Texto, Model.Cancelar.Action)
+    }
+</nav>
+
+@if(Model.HabiliteSalvar)
+{
+    <text>
+        <script>
+             $(function() {
+                app.carregueJavascript("/js/app.barradebotoes.js", {
+                    callback: function() {
+                        var elFormulario = $("@(Model.SeletorFormulario)");
+                        new app.barradebotoes($("#@(idComponente)"), elFormulario);
+                    }            
+                });
+            })
+        </script>    
+    </text>
+}

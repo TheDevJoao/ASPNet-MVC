@@ -1,0 +1,15 @@
+﻿@model ModelLabel
+
+@{
+    var propriedade = Model.Propriedade ?? string.Empty;
+    var style = Model.Obrigatorio ? "" : "margin-right: 15px";
+}
+
+<label name="@(propriedade)" style="@(style)">
+    @Model.Texto
+</label>
+
+@if(Model.Obrigatorio)
+{
+    <span class="label-obrigatorio">●</span>    
+}

@@ -1,0 +1,83 @@
+﻿@using System
+
+@model ModelCombogrid
+
+@{
+    var idComponente = Guid.NewGuid().ToString("N");
+    var propriedadeSelecionada = Model.IdentificadorDaPropriedade + "." + Model.CampoChave;
+    var modelParaOClientSide = new
+    {
+        identificador = Model.IdentificadorDaPropriedade,
+        controller = Model.Controller,
+        action = Model.Action,
+        itemSelecionado = Model.Valor,
+        colunas = Model.Colunas,
+        campoChave = Model.CampoChave,
+        camposTemplate = Model.CamposTemplate,
+        pagina = 1,
+        quantidade = Model.QtdDeItensRetornados,
+        propriedadeSelecionada = propriedadeSelecionada
+    };
+
+    var className = "";
+    var style = "";
+
+    if(Model.HtmlAttributes != null && Model.HtmlAttributes.ContainsKey("class"))
+    {
+        className = Model.HtmlAttributes["class"] as string;
+    }
+
+    if(Model.Tamanho > 0)
+    {
+        style = "width: " + Model.Tamanho + "px";
+    }
+}
+
+<div id="@(idComponente)" class="app-combogrid">
+
+    @Html.Hidden(@propriedadeSelecionada)
+
+    <div class="dropdown">
+        <input type="text"               
+               id="@(Model.IdentificadorDaPropriedade)"
+               name="@(Model.IdentificadorDaPropriedade)"
+               placeholder="@(Model.Placeholder)"
+               class="@(className)"
+               style="@(style)"
+               autocomplete="off"
+               data-pesquisar
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false"
+               @if (!Model.Habilite) { <text> disabled </text> }
+               @if (Model.Obrigatorio) { <text> required </text> }
+               @if (Model.Autofocus) { <text> autofocus </text> }
+               />
+        
+        @if(Model.Habilite)
+        {
+            <span class="dropdown-icon"></span>
+        }
+
+        <div class="dropdown-menu" aria-labelledby="@(Model.IdentificadorDaPropriedade)">
+            <table name="grid">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(function () {
+        app.carregueCss("/css/app.combogrid.css");
+        app.carregueJavascript("/js/app.combogrid.js", {
+            callback: function () {
+                new app.combogrid($("#@(idComponente)"), @Html.Raw(Json.Serialize(@modelParaOClientSide)));
+            }
+        });
+    })
+</script>

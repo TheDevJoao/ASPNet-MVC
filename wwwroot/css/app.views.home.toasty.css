@@ -1,0 +1,24 @@
+﻿.app-views-home-toasty {
+    font-size: 1em;
+    padding-top: 30px;        
+    font-family: sans-serif;
+}
+
+.app-views-home-toasty button {    
+    margin-top: 30px;
+    border: 1px solid rgba(115, 115, 115, 0.4);
+    outline: none;
+    transition:  all ease 100ms;
+}
+
+.app-views-home-toasty button:hover {
+    border: 1px solid rgba(115, 115, 115, 0.9);
+}
+
+.app-views-home-toasty button:active {
+    background-color: hsl(212, 12%, 15%);
+}
+
+.app-views-home-toasty a:visited {
+    color: inherit;
+}

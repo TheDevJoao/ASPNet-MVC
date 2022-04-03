@@ -1,0 +1,40 @@
+﻿
+@model ModelTextBox
+
+@{
+    var className = "";
+    var style = "";
+
+    if(Model.HtmlAttributes != null && Model.HtmlAttributes.ContainsKey("class"))
+    {
+        className = Model.HtmlAttributes["class"] as string;
+    }
+
+    if(Model.Tamanho > 0)
+    {
+        style = "width: " + Model.Tamanho + "px";
+    }
+}
+
+<input type="text" 
+       name="@(Model.Propriedade)" 
+       id="@(Model.Propriedade)" 
+       value= "@(Model.Valor)"
+       placeholder= "@(Model.Placeholder)"       
+       autocomplete="off"
+       class="@(className)"
+       style="@(style)"
+       @if (!Model.Habilite) { <text> disabled </text> }
+       @if (Model.Obrigatorio) { <text> required </text> }
+       @if (Model.Autofocus) { <text> autofocus </text> }
+       />
+
+<script>
+     $(function(){
+            app.carregueJavascript("/js/app.textbox.js", {
+                callback: function() {
+                    new app.textbox($("#@(Model.Propriedade)"));
+                }
+            });
+        });
+</script>

@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["titulo"] = "Funcionario";
+
+    var idComponente = Guid.NewGuid().ToString("N");
+    var modelParaOClientSide = new { };
+}
+
+<section  id="@(idComponente)" class="painel app-views-funcionario-index">
+          
+    @Html.AppBarraDeBotoes().TelaInicial()
+
+    @Html.AppTitulo("Funcionários")
+
+    @(Html.AppTabela("grid")
+        .Colunas(new string[] {"Código", "Nome", "Departamento"})
+        .Campos(new string[] {"codigo", "nome", "departamento"})
+        .LarguraDasColunas(new int[] { 200, 300 })
+        .CampoChave("codigo")
+        .Controller("Funcionario")
+        .Action("ConsultePaginado")
+        .HabiliteFiltro()
+        .HabilitePaginacao())
+
+</section>
+
+
+@section Scripts{
+
+    <script>
+        $(function() {
+            app.carregueJavascript("/js/app.views.funcionario.index.js", {
+                callback: function() {
+                    new app.views.funcionario.index($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)) );
+                }            
+            });
+        })
+    </script>
+
+}

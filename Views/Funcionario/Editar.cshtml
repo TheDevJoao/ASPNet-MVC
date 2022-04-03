@@ -1,0 +1,70 @@
+﻿@model Funcionario
+
+@{
+    var idComponente = Guid.NewGuid().ToString("N");
+    var modelParaOClientSide = new { };
+    var codigo = Model == null ? 0 : Model.Codigo;
+}
+
+<section id="@(idComponente)" class="painel app-views-funcionario-editar">
+       
+    @using(Html.BeginForm("Salvar", "Funcionario", FormMethod.Post))
+    {        
+        <!-- Barra de botoes -->
+        @(Html.AppBarraDeBotoes(idComponente)
+              .TelaEdicao(configureActionExcluir: x => x.ValorChave = codigo))
+
+        <!-- Titulo -->        
+        @Html.AppTitulo("Funcionários")
+
+        <!-- Codigo -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">
+                @Html.AppLabel(x => x.Codigo)
+            </div>
+            <div class="coluna">                
+                @Html.HiddenFor(x => x.Codigo)                
+                @Html.AppTextBox(x => x.Codigo, habilite: false, placeholder:"Novo")
+            </div>
+        </div>
+
+        <!-- Nome -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">                
+                @Html.AppLabel(x => x.Nome, obrigatorio: true)
+            </div>
+            <div class="coluna">                
+                @(Html.AppTextBox(x => x.Nome, 
+                    obrigatorio:true, 
+                    autofocus: true,
+                    tamanho: 300))
+            </div>
+        </div>
+
+        <!-- Departamento -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">                
+                @Html.AppLabel("Departamento", obrigatorio: true)
+            </div>
+            <div class="coluna">
+                @Html.AppCombogridDepartamento(x => x.Departamento, obrigatorio: true, tamanho: 300)
+            </div>
+        </div>
+    }
+
+
+</section>
+
+@section Scripts{
+
+    <script>
+        $(function(){
+            app.carregueJavascript("/js/app.views.funcionario.editar.js", {
+                callback: function() {
+                    new app.views.funcionario.editar($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)));
+                }
+            });
+        });
+    </script>
+
+}

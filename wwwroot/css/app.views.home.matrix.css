@@ -1,0 +1,10 @@
+﻿.app-views-home-matrix {    
+    margin: 0 -200px 0 -200px;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+.app-views-home-matrix canvas {
+    display: block;
+}

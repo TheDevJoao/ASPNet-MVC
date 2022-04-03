@@ -1,0 +1,83 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container {
+    margin: 0 200px 0 200px;
+    height: 100%;
+}
+
+header {
+    background-color: #101010;
+    font-weight: bold;
+    padding: 15px 200px 15px 200px;
+    margin: 0 -200px 0 -200px;
+}
+
+    header > a {
+        color: #bbbbbb;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+        header > a:hover {
+            color: #ffffff;
+        }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 70.5%;
+    padding: 10px 0 10px;
+    border-top: 1px solid #d0cdcd;
+    text-align: center;
+}
+
+input, select {
+    padding: .375rem .75rem;
+    color: #495057;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+    input.tamanho300 {
+        width: 300px;
+    }
+
+    select.tamanho300 {
+        width: 325px;
+    }
+
+    input[disabled] {
+        background-color: #cecece;
+    }
+
+button {
+    border: 1px solid transparent;
+    padding: .375rem .375rem;
+    border-radius: .25rem;
+}
+
+    button:hover {
+        cursor: pointer;
+        background-color: #ced4da;
+    }
+
+form.valideInconsistencia .obrigatorio:invalid {
+    border-color: #dc3545;    
+}
+
+form .label-obrigatorio {
+    display: inline-block;
+    text-align: middle;
+    width: 10px;
+    color: #FF0000;
+}

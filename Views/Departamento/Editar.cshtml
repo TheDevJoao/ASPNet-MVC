@@ -1,0 +1,64 @@
+﻿@model Departamento
+
+@{
+    var idComponente = Guid.NewGuid().ToString("N");
+    var modelParaOClientSide = new { };
+
+    var codigo = Model == null ? 0 : Model.Codigo;
+}
+
+<section id="@(idComponente)" class="painel app-views-departamento-editar">
+         
+    @using(Html.BeginForm("Salvar", "Departamento", FormMethod.Post))
+    {
+        <!-- Barra de botoes -->        
+        @(Html.AppBarraDeBotoes(idComponente)
+              .TelaEdicao(configureActionExcluir: x => x.ValorChave = codigo))
+              
+        <!-- Titulo -->
+        @Html.AppTitulo("Departamento")
+
+        <!-- Codigo -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">                
+                @Html.AppLabel(x => x.Codigo)
+            </div>
+            <div class="coluna">    
+                @Html.HiddenFor(x => x.Codigo)           
+                
+                @(Html.AppTextBox(x => x.Codigo,                     
+                    habilite:false, 
+                    placeholder:"Novo"))
+            </div>
+        </div>
+
+        <!-- Descrição -->
+        <div class="linha">
+            <div class="coluna40 texto-alinhado-direita">                
+                @Html.AppLabel(x => x.Descricao, obrigatorio: true)
+            </div>
+            <div class="coluna">                
+                @(Html.AppTextBox(x => x.Descricao, 
+                   obrigatorio:true, 
+                   autofocus: true,
+                   tamanho: 300))
+            </div>
+        </div>
+    }
+
+</section>
+
+
+@section Scripts{
+
+    <script>
+        $(function(){
+            app.carregueJavascript("/js/app.views.departamento.editar.js", {
+                callback: function() {
+                    new app.views.departamento.editar($("#@(idComponente)"), @Html.Raw(Json.Serialize(modelParaOClientSide)));
+                }
+            });
+        });
+    </script>
+
+}
